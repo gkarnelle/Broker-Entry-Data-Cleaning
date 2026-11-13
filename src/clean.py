@@ -14,9 +14,15 @@ FIELDS = ['tax_id', 'importer_name', 'entry_number', 'entry_line_number',
           'quantity', 'unit_of_measure', 'value', 'currency', 'supplier',
           'manufacturer', 'duty_amount']
 NULLS = {'', 'n/a', 'null', '-'}
-COUNTRIES = {'us': 'US', 'usa': 'US', 'united states': 'US', 'cn': 'CN',
-             'china': 'CN', 'mx': 'MX', 'mexico': 'MX', 'ca': 'CA',
-             'canada': 'CA', 'vn': 'VN', 'vietnam': 'VN'}
+COUNTRIES = {
+    'us': 'US', 'usa': 'US', 'united states': 'US',
+    'cn': 'CN', 'china': 'CN',
+    'mx': 'MX', 'mexico': 'MX',
+    'ca': 'CA', 'canada': 'CA',
+    'vn': 'VN', 'vietnam': 'VN',
+    'de': 'DE', 'germany': 'DE',
+    'kr': 'KR', 'south korea': 'KR',
+}
 REQUIRED = {'tax_id', 'importer_name', 'entry_number', 'entry_line_number',
             'entry_date', 'coo', 'coe', 'hts', 'quantity', 'unit_of_measure',
             'value', 'currency', 'supplier'}
