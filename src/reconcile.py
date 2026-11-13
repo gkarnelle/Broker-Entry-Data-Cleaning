@@ -74,8 +74,8 @@ for row in broker_rows:
     else:
         if row["part_number"] and row["part_number"] != ref["product_id"]:
             issues.append("product_mismatch")
-
-        if row["hts"] != ref["illustrative_hts_code"]:
+        
+        if row["hts"].replace(".", "").replace("-", "").replace(" ", "") != ref["illustrative_hts_code"].replace(".", "").replace("-", "").replace(" ", ""):
             issues.append("hts_mismatch")
 
         if money(row["quantity"]) != money(ref["quantity_entered"]):
