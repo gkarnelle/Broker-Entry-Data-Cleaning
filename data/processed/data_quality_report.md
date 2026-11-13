@@ -4,13 +4,13 @@ Synthetic demonstration data only.
 
 | Metric | Count |
 |---|---:|
-| Input rows | 23 |
-| Output rows | 20 |
-| Exact duplicates removed | 3 |
-| Conflicting rows retained | 4 |
-| Rows needing review | 13 |
-| Allowed blank part numbers | 4 |
-| Changed cells | 75 |
+| Input rows | 4909 |
+| Output rows | 4894 |
+| Exact duplicates removed | 15 |
+| Conflicting rows retained | 0 |
+| Rows needing review | 87 |
+| Allowed blank part numbers | 49 |
+| Changed cells | 13096 |
 
 ## Completeness
 
@@ -18,23 +18,23 @@ Before counts use all input rows; after counts use retained rows. Nulls are not 
 
 | Field | Nulls before | Nulls after |
 |---|---:|---:|
-| tax_id | 1 | 1 |
+| tax_id | 0 | 0 |
 | importer_name | 0 | 0 |
 | entry_number | 0 | 0 |
 | entry_line_number | 0 | 0 |
 | entry_date | 0 | 0 |
-| coo | 0 | 0 |
+| coo | 37 | 36 |
 | coe | 0 | 0 |
-| hts | 1 | 1 |
-| part_number | 5 | 4 |
+| hts | 0 | 0 |
+| part_number | 50 | 49 |
 | description | 0 | 0 |
 | quantity | 0 | 0 |
 | unit_of_measure | 0 | 0 |
-| value | 0 | 0 |
+| value | 28 | 28 |
 | currency | 0 | 0 |
-| supplier | 1 | 1 |
-| manufacturer | 23 | 20 |
-| duty_amount | 0 | 0 |
+| supplier | 0 | 0 |
+| manufacturer | 4909 | 4894 |
+| duty_amount | 4909 | 4894 |
 
 ## Interpretation
 

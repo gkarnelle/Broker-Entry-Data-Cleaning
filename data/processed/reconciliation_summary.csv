@@ -1,0 +1,5 @@
+metric,value
+broker_rows_reconciled,4894
+matched_rows,0
+rows_needing_review,4894
+reference_entry_lines,4894

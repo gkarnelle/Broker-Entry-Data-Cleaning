@@ -1,14 +1,91 @@
 record_id,broker,source_file,source_row,field,issue,original
-broker_abc.csv:4,Broker ABC,broker_abc.csv,4,supplier,required value missing,  n/a  
-broker_abc.csv:6,Broker ABC,broker_abc.csv,6,hts,required value missing,
-broker_usa.csv:4,Broker USA,broker_usa.csv,4,tax_id,required value missing,
-broker_usa.csv:6,Broker USA,broker_usa.csv,6,coo,unmapped country; expand reviewed lookup,Atlantis
-broker_usa.csv:7,Broker USA,broker_usa.csv,7,value,invalid number; expected US numeric format,unknown
-broker_usa.csv:9,Broker USA,broker_usa.csv,9,entry_date,invalid date for configured broker formats,2026-02-30
-broker_xyz.csv:5,Ziggy & Co. Customs Brokerage,broker_xyz.csv,5,currency,unsupported demo currency,???
-broker_xyz.csv:6,Ziggy & Co. Customs Brokerage,broker_xyz.csv,6,hts,expected 10 digits under demo rules,12345
-broker_xyz.csv:8,Ziggy & Co. Customs Brokerage,broker_xyz.csv,8,quantity,negative amount or quantity requires review,-4
-broker_abc.csv:7,Broker ABC,broker_abc.csv,7,value,conflicting entry line: value,
-broker_xyz.csv:3,Ziggy & Co. Customs Brokerage,broker_xyz.csv,3,value,conflicting entry line: value,
-broker_usa.csv:8,Broker USA,broker_usa.csv,8,part_number,conflicting entry line: part_number,
-broker_xyz.csv:2,Ziggy & Co. Customs Brokerage,broker_xyz.csv,2,part_number,conflicting entry line: part_number,
+broker_abc.csv:2,Broker ABC,broker_abc.csv,2,coo,required value missing,
+broker_abc.csv:2,Broker ABC,broker_abc.csv,2,quantity,negative amount or quantity requires review,-5
+broker_abc.csv:139,Broker ABC,broker_abc.csv,139,coo,required value missing,
+broker_abc.csv:175,Broker ABC,broker_abc.csv,175,value,required value missing,
+broker_abc.csv:213,Broker ABC,broker_abc.csv,213,quantity,negative amount or quantity requires review,-5
+broker_abc.csv:276,Broker ABC,broker_abc.csv,276,coo,required value missing,
+broker_abc.csv:348,Broker ABC,broker_abc.csv,348,value,required value missing,
+broker_abc.csv:413,Broker ABC,broker_abc.csv,413,coo,required value missing,
+broker_abc.csv:424,Broker ABC,broker_abc.csv,424,quantity,negative amount or quantity requires review,-5
+broker_abc.csv:521,Broker ABC,broker_abc.csv,521,value,required value missing,
+broker_abc.csv:550,Broker ABC,broker_abc.csv,550,coo,required value missing,
+broker_abc.csv:635,Broker ABC,broker_abc.csv,635,quantity,negative amount or quantity requires review,-5
+broker_abc.csv:687,Broker ABC,broker_abc.csv,687,coo,required value missing,
+broker_abc.csv:694,Broker ABC,broker_abc.csv,694,value,required value missing,
+broker_abc.csv:824,Broker ABC,broker_abc.csv,824,coo,required value missing,
+broker_abc.csv:846,Broker ABC,broker_abc.csv,846,quantity,negative amount or quantity requires review,-5
+broker_abc.csv:867,Broker ABC,broker_abc.csv,867,value,required value missing,
+broker_abc.csv:961,Broker ABC,broker_abc.csv,961,coo,required value missing,
+broker_abc.csv:1040,Broker ABC,broker_abc.csv,1040,value,required value missing,
+broker_abc.csv:1057,Broker ABC,broker_abc.csv,1057,quantity,negative amount or quantity requires review,-5
+broker_abc.csv:1098,Broker ABC,broker_abc.csv,1098,coo,required value missing,
+broker_abc.csv:1213,Broker ABC,broker_abc.csv,1213,value,required value missing,
+broker_abc.csv:1235,Broker ABC,broker_abc.csv,1235,coo,required value missing,
+broker_abc.csv:1268,Broker ABC,broker_abc.csv,1268,quantity,negative amount or quantity requires review,-5
+broker_abc.csv:1372,Broker ABC,broker_abc.csv,1372,coo,required value missing,
+broker_abc.csv:1386,Broker ABC,broker_abc.csv,1386,value,required value missing,
+broker_abc.csv:1479,Broker ABC,broker_abc.csv,1479,quantity,negative amount or quantity requires review,-5
+broker_abc.csv:1509,Broker ABC,broker_abc.csv,1509,coo,required value missing,
+broker_abc.csv:1559,Broker ABC,broker_abc.csv,1559,value,required value missing,
+broker_abc.csv:1634,Broker ABC,broker_abc.csv,1634,coo,required value missing,
+broker_abc.csv:1634,Broker ABC,broker_abc.csv,1634,quantity,negative amount or quantity requires review,-5
+broker_usa.csv:72,Broker USA,broker_usa.csv,72,quantity,negative amount or quantity requires review,-5
+broker_usa.csv:93,Broker USA,broker_usa.csv,93,coo,required value missing,
+broker_usa.csv:117,Broker USA,broker_usa.csv,117,value,required value missing,
+broker_usa.csv:230,Broker USA,broker_usa.csv,230,coo,required value missing,
+broker_usa.csv:283,Broker USA,broker_usa.csv,283,quantity,negative amount or quantity requires review,-5
+broker_usa.csv:290,Broker USA,broker_usa.csv,290,value,required value missing,
+broker_usa.csv:367,Broker USA,broker_usa.csv,367,coo,required value missing,
+broker_usa.csv:463,Broker USA,broker_usa.csv,463,value,required value missing,
+broker_usa.csv:494,Broker USA,broker_usa.csv,494,quantity,negative amount or quantity requires review,-5
+broker_usa.csv:504,Broker USA,broker_usa.csv,504,coo,required value missing,
+broker_usa.csv:636,Broker USA,broker_usa.csv,636,value,required value missing,
+broker_usa.csv:641,Broker USA,broker_usa.csv,641,coo,required value missing,
+broker_usa.csv:705,Broker USA,broker_usa.csv,705,quantity,negative amount or quantity requires review,-5
+broker_usa.csv:778,Broker USA,broker_usa.csv,778,coo,required value missing,
+broker_usa.csv:809,Broker USA,broker_usa.csv,809,value,required value missing,
+broker_usa.csv:915,Broker USA,broker_usa.csv,915,coo,required value missing,
+broker_usa.csv:916,Broker USA,broker_usa.csv,916,quantity,negative amount or quantity requires review,-5
+broker_usa.csv:982,Broker USA,broker_usa.csv,982,value,required value missing,
+broker_usa.csv:1052,Broker USA,broker_usa.csv,1052,coo,required value missing,
+broker_usa.csv:1127,Broker USA,broker_usa.csv,1127,quantity,negative amount or quantity requires review,-5
+broker_usa.csv:1155,Broker USA,broker_usa.csv,1155,value,required value missing,
+broker_usa.csv:1189,Broker USA,broker_usa.csv,1189,coo,required value missing,
+broker_usa.csv:1326,Broker USA,broker_usa.csv,1326,coo,required value missing,
+broker_usa.csv:1328,Broker USA,broker_usa.csv,1328,value,required value missing,
+broker_usa.csv:1338,Broker USA,broker_usa.csv,1338,quantity,negative amount or quantity requires review,-5
+broker_usa.csv:1463,Broker USA,broker_usa.csv,1463,coo,required value missing,
+broker_usa.csv:1501,Broker USA,broker_usa.csv,1501,value,required value missing,
+broker_usa.csv:1549,Broker USA,broker_usa.csv,1549,quantity,negative amount or quantity requires review,-5
+broker_usa.csv:1600,Broker USA,broker_usa.csv,1600,coo,required value missing,
+broker_xyz.csv:47,Ziggy & Co. Customs Brokerage,broker_xyz.csv,47,coo,required value missing,
+broker_xyz.csv:59,Ziggy & Co. Customs Brokerage,broker_xyz.csv,59,value,required value missing,
+broker_xyz.csv:142,Ziggy & Co. Customs Brokerage,broker_xyz.csv,142,quantity,negative amount or quantity requires review,-5
+broker_xyz.csv:184,Ziggy & Co. Customs Brokerage,broker_xyz.csv,184,coo,required value missing,
+broker_xyz.csv:232,Ziggy & Co. Customs Brokerage,broker_xyz.csv,232,value,required value missing,
+broker_xyz.csv:321,Ziggy & Co. Customs Brokerage,broker_xyz.csv,321,coo,required value missing,
+broker_xyz.csv:353,Ziggy & Co. Customs Brokerage,broker_xyz.csv,353,quantity,negative amount or quantity requires review,-5
+broker_xyz.csv:405,Ziggy & Co. Customs Brokerage,broker_xyz.csv,405,value,required value missing,
+broker_xyz.csv:458,Ziggy & Co. Customs Brokerage,broker_xyz.csv,458,coo,required value missing,
+broker_xyz.csv:564,Ziggy & Co. Customs Brokerage,broker_xyz.csv,564,quantity,negative amount or quantity requires review,-5
+broker_xyz.csv:578,Ziggy & Co. Customs Brokerage,broker_xyz.csv,578,value,required value missing,
+broker_xyz.csv:595,Ziggy & Co. Customs Brokerage,broker_xyz.csv,595,coo,required value missing,
+broker_xyz.csv:732,Ziggy & Co. Customs Brokerage,broker_xyz.csv,732,coo,required value missing,
+broker_xyz.csv:751,Ziggy & Co. Customs Brokerage,broker_xyz.csv,751,value,required value missing,
+broker_xyz.csv:775,Ziggy & Co. Customs Brokerage,broker_xyz.csv,775,quantity,negative amount or quantity requires review,-5
+broker_xyz.csv:869,Ziggy & Co. Customs Brokerage,broker_xyz.csv,869,coo,required value missing,
+broker_xyz.csv:924,Ziggy & Co. Customs Brokerage,broker_xyz.csv,924,value,required value missing,
+broker_xyz.csv:986,Ziggy & Co. Customs Brokerage,broker_xyz.csv,986,quantity,negative amount or quantity requires review,-5
+broker_xyz.csv:1006,Ziggy & Co. Customs Brokerage,broker_xyz.csv,1006,coo,required value missing,
+broker_xyz.csv:1097,Ziggy & Co. Customs Brokerage,broker_xyz.csv,1097,value,required value missing,
+broker_xyz.csv:1143,Ziggy & Co. Customs Brokerage,broker_xyz.csv,1143,coo,required value missing,
+broker_xyz.csv:1197,Ziggy & Co. Customs Brokerage,broker_xyz.csv,1197,quantity,negative amount or quantity requires review,-5
+broker_xyz.csv:1270,Ziggy & Co. Customs Brokerage,broker_xyz.csv,1270,value,required value missing,
+broker_xyz.csv:1280,Ziggy & Co. Customs Brokerage,broker_xyz.csv,1280,coo,required value missing,
+broker_xyz.csv:1408,Ziggy & Co. Customs Brokerage,broker_xyz.csv,1408,quantity,negative amount or quantity requires review,-5
+broker_xyz.csv:1417,Ziggy & Co. Customs Brokerage,broker_xyz.csv,1417,coo,required value missing,
+broker_xyz.csv:1443,Ziggy & Co. Customs Brokerage,broker_xyz.csv,1443,value,required value missing,
+broker_xyz.csv:1554,Ziggy & Co. Customs Brokerage,broker_xyz.csv,1554,coo,required value missing,
+broker_xyz.csv:1616,Ziggy & Co. Customs Brokerage,broker_xyz.csv,1616,value,required value missing,
+broker_xyz.csv:1619,Ziggy & Co. Customs Brokerage,broker_xyz.csv,1619,quantity,negative amount or quantity requires review,-5
