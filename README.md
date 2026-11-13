@@ -1,320 +1,151 @@
-# Broker Import Entry Data Cleaning & Standardization
 
-The project demonstrates how structured data quality controls, documented transformation rules, exception reporting, and source traceability can support reliable customs operations and downstream compliance review.
+# Broker Entry Data Cleaning & Reconciliation
 
-**Core Focus:** Data standardization | Data governance | Exception management | Data quality controls | Audit support
+### GaiAnQi Global Trading | Trade Compliance Analytics Portfolio
 
-> **Portfolio Disclaimer:** All records, brokers, suppliers, tax IDs, entry numbers, and tariff codes are fictional. Tariff codes are synthetic identifiers, not verified HTS classifications. This project demonstrates data engineering and operational data quality practices, not regulatory compliance determination or customs filing validation.
+An automated Python pipeline that standardizes synthetic customs
+broker submissions, identifies data-quality exceptions, maintains
+an audit trail, and reconciles broker entry lines against a
+centralized customs entry dataset.
 
----
+## Executive Summary
 
-## 📋 1. Business Problem & Objective
+GaiAnQi Global Trading is a fictional importer used across a
+connected portfolio of international trade analytics projects.
 
-### The Business Challenge
+This project simulates a common trade compliance challenge:
+receiving customs entry data from multiple brokers with
+inconsistent file layouts, formatting conventions, and data quality.
 
-Organizations frequently receive import entry data from multiple customs brokers, each using different reporting formats, naming conventions, date structures, and data quality standards.
+The pipeline transforms these submissions into a standardized
+dataset and identifies records requiring further investigation.
 
-Without consistent processing controls, these differences can create duplicate records, unresolved discrepancies, unreliable reporting, and additional manual review requirements.
+## Results
 
-### The Solution
-
-This project implements a reproducible Python pipeline that:
-
-- Standardizes inconsistent broker data into a common schema.
-- Normalizes dates, identifiers, monetary values, and missing data.
-- Removes exact normalized duplicates while retaining conflicting versions.
-- Identifies invalid or incomplete records requiring review.
-- Generates exception reports and detailed transformation logs.
-- Preserves source information to support traceability.
-
-### Intended Business Value
-
-Establishes a repeatable data preparation process that improves the consistency, transparency, and reviewability of customs entry data.
-
-Rather than automatically correcting uncertain information, the pipeline flags unresolved discrepancies for investigation.
-
----
-
-## 🏢 2. Fictional Business Scenario
-
-A company receives monthly import entry reports from three independent customs brokers:
-
-| Customs Broker | Entries Handled | Example Data Quality Issue |
-|---|---|---|
-| Broker ABC | DEMO-000001 to DEMO-000003 | Duplicate lines and conflicting entered values |
-| Broker USA | DEMO-000004 to DEMO-000006 | Repeated records and inconsistent part number completeness |
-| Ziggy & Co. Customs Brokerage | DEMO-000007 to DEMO-000009 | Invalid quantity, synthetic HTS, and currency values |
-
-Each broker handles different entries for the same importer.
-
-The dataset contains nine distinct entries, each with two entry lines before duplicates and revisions. No entry is shared across brokers.
-
-Overlapping exports may contain duplicate records or conflicting versions of the same entry line. Because revision timestamps and broker confirmations are unavailable, conflicting versions are retained for review rather than assumed to be valid corrections.
-
----
-
-## 🛠️ 3. Data Pipeline Architecture
-
-### Stage 1: Data Ingestion
-
-Three fictional broker CSV extracts are loaded from `data/raw/`.
-
-The pipeline uses explicit configuration mappings to accommodate differences in:
-
-- Column names and column order
-- File delimiters
-- Date formats
-- Broker-specific source structures
-
-### Stage 2: Standardization & Transformation
-
-Python standard-library processing applies documented normalization rules to:
-
-- Entry dates
-- Importer tax identifiers
-- Country-of-origin codes
-- Synthetic tariff identifiers
-- Monetary values
-- Missing values and placeholders
-- Part numbers
-
-Leading zeros in identifiers are preserved, and blank part numbers remain permissible.
-
-### Stage 3: Data Quality Controls
-
-The pipeline evaluates records against explicit validation and duplicate-detection rules.
-
-The matching key is:
-
-**Broker + Tax ID + Entry Number + Entry Line Number**
-
-All 18 business fields must match within the same broker before a record is automatically removed as an exact duplicate.
-
-Records sharing a matching key but containing differing values are retained and flagged as conflicts.
-
-### Stage 4: Exception Identification
-
-Records with unresolved data quality issues are identified for further review.
-
-The pipeline distinguishes between:
-
-- Exact duplicates eligible for removal
-- Conflicting versions requiring investigation
-- Invalid or incomplete field values
-- Permissible missing information
-
-### Stage 5: Reporting & Traceability
-
-Standardized outputs, exception reports, quality metrics, and transformation logs are generated under `data/processed/`.
-
-Raw source files remain unchanged.
-
----
-
-## 🛡️ 4. Enterprise Data Governance & Compliance Controls
-
-This project applies foundational data governance principles to a fictional customs operations environment.
-
-### Data Quality Control Framework
-
-| Control Area | Implemented Control | Governance Purpose |
-|---|---|---|
-| Schema Consistency | Explicit broker field mappings | Standardize source data structures |
-| Data Completeness | Missing-value identification | Surface incomplete records for review |
-| Data Validity | Field-level validation rules | Identify invalid or unexpected values |
-| Duplicate Management | Exact normalized record comparison | Prevent duplicate records in standardized outputs |
-| Conflict Management | Retention and flagging of differing versions | Prevent unsupported assumptions about corrections |
-| Data Traceability | Source fields and transformation logs | Support review of processing decisions |
-| Quality Monitoring | Summary metrics and issue reporting | Provide visibility into data quality outcomes |
-
-### Data Stewardship & Accountability
-
-In an enterprise implementation, responsibility for customs data quality would typically be distributed across operational and governance functions.
-
-An illustrative responsibility model could include:
-
-| Role | Proposed Responsibility |
-|---|---|
-| Customs Operations Analyst | Review entry data exceptions and investigate discrepancies |
-| Trade Compliance Team | Evaluate issues requiring regulatory interpretation |
-| Data Steward | Maintain data definitions, quality rules, and issue documentation |
-| Data Engineering / IT | Maintain processing logic, mappings, and technical controls |
-| Internal Audit | Independently assess control design and supporting evidence |
-
-*These responsibilities illustrate a proposed enterprise governance model. The project does not implement user assignments, approvals, or role-based access.*
-
-### Audit Support & Traceability
-
-The project produces several artifacts that can support data quality review:
-
-- **Change Log:** Records standardized cell-level changes.
-- **Duplicate Removal Log:** Identifies records removed through exact matching.
-- **Exception Report:** Contains records requiring further investigation.
-- **Data Quality Report:** Summarizes processing results and unresolved issues.
-- **Source Tracking:** Preserves source information in standardized records.
-
-These outputs provide traceable processing evidence, but do not constitute a complete enterprise audit management system.
-
----
-
-## 📊 5. Results & Key Findings
-
-The included synthetic dataset produces the following results:
-
-| Data Quality Metric | Result |
+| Metric | Result |
 |---|---:|
-| Input records across three brokers | 23 |
-| Exact normalized duplicates removed | 3 |
-| Retained records | 20 |
-| Conflicting records retained for review | 4 |
-| Records requiring review, including conflicts | 13 |
-| Permissible blank part numbers | 4 |
-| Standardized cells across input records | 79 |
+| Broker submissions | 3 |
+| Incoming records | 4,909 |
+| Cleaned records | 4,894 |
+| Exact duplicates removed | 15 |
+| Cells standardized | 13,096 |
+| Cleaning review records | 87 |
+| Reconciliation review records | 106 |
+| Successfully reconciled records | 4,788 |
+| Reconciliation match rate | 97.83% |
 
-### Key Observations
+Results reflect the current deterministic synthetic dataset.
 
-**Duplicate Detection:** Three exact normalized duplicates were removed without automatically discarding conflicting records.
+## Pipeline
 
-**Exception Visibility:** Thirteen retained records were identified as requiring review, including four conflicting versions.
+1. Generate synthetic submissions for three customs brokers.
+2. Read broker-specific field mappings and file formats.
+3. Standardize dates, country codes, HTS formatting, currencies,
+   numeric fields, and other data elements.
+4. Detect exact duplicates and retain records requiring review.
+5. Produce standardized data and auditable quality reports.
+6. Reconcile broker records against reference customs entry lines.
+7. Publish refreshed results through GitHub Actions.
 
-**Controlled Standardization:** Seventy-nine cells were standardized across the input dataset.
+## Data Quality Controls
 
-**Preservation of Uncertainty:** Records containing unresolved issues remain available for investigation instead of being silently corrected or excluded.
+The pipeline includes:
 
-The intentionally small dataset allows users to inspect individual decisions and understand the effect of each transformation rule.
+- Required-field validation
+- Broker-specific schema mapping
+- Country-code normalization
+- HTS formatting normalization
+- Date and numeric standardization
+- Duplicate detection
+- Conflicting-key detection
+- Missing-value reporting
+- Cell-level change logging
+- Exception reporting
 
----
+Blank optional fields are distinguished from required-field
+validation failures.
 
-## 🔎 6. Before & After: Data Standardization
+## Reconciliation
 
-The examples below come from different brokers and do not represent matching transactions.
+Broker entry lines are compared against reference customs records
+using entry identifiers and relevant transaction attributes.
 
-| Field | Broker ABC: Raw → Cleaned | Broker USA: Raw → Cleaned |
-|---|---|---|
-| Entry / Line | `DEMO-000001` / `1` → unchanged | `DEMO-000004` / `2` → unchanged |
-| Tax ID | `00-1234567` → `001234567` | `001234567` → unchanged |
-| Entry Date | `09/15/2026` → `2026-09-15` | `2026-09-15` → unchanged |
-| Country of Origin | `China` → `CN` | `CN` → unchanged |
-| Synthetic HTS | `0000.00.0001` → `0000000001` | `0000000001` → unchanged |
-| Entered Value | `$125.00` → `125.00` | `1000.00` → unchanged |
-| Part Number | `00001-A` → unchanged | Whitespace → null (allowed) |
+Comparison fields include:
 
----
+- Product identifier, when supplied
+- HTS code
+- Quantity
+- Entered value
+- Country of origin
 
-## ⚙️ 7. Setup & Installation
+The process distinguishes formatting differences from substantive
+data discrepancies.
 
-### Requirements
+Records requiring review are not automatically classified as
+customs violations.
 
-- Python 3.9 or later
-- No third-party Python packages required
-- No external accounts or API credentials required
+## Key Outputs
 
-### Clone the Repository
+| File | Purpose |
+|---|---|
+| `cleaned_entries.csv` | Standardized broker records |
+| `exceptions.csv` | Cleaning exceptions |
+| `quality_issues.csv` | Field-level quality findings |
+| `change_log.csv` | Standardization audit trail |
+| `removed_duplicates.csv` | Removed duplicate records |
+| `quality_summary.json` | Cleaning performance metrics |
+| `data_quality_report.md` | Data-quality summary |
+| `reconciliation_results.csv` | Line-level reconciliation |
+| `reconciliation_summary.csv` | Reconciliation metrics |
 
-```bash
-git clone https://github.com/gkarnelle-lab/Broker-Entry-Data-Cleaning.git
-cd Broker-Entry-Data-Cleaning
-```
+Generated outputs are located in `data/processed/`.
 
-### Run the Data Cleaning Pipeline
+## Automation
 
-```bash
-python3 src/clean.py
-```
+GitHub Actions runs the following scripts:
 
-### Run Automated Tests
+- `src/generate_broker_data.py`
+- `src/clean.py`
+- `src/reconcile.py`
 
-```bash
-python3 -m unittest discover -s tests -v
-```
+The workflow supports manual execution and a monthly refresh.
 
-On Windows, use `python` instead of `python3` if appropriate.
+## Connected Portfolio
 
-### Optional: Custom Input and Output Directories
+This project forms the third stage of the GaiAnQi Global Trading
+analytics portfolio:
 
-```bash
-python3 src/clean.py --input path/to/raw --output path/to/results --mapping path/to/mappings.json
-```
+**1. Strategic Sourcing Intelligence**
 
-The script never modifies raw input files. Re-running the pipeline overwrites the named output files with deterministic results.
+Supplier performance, purchasing exposure, sourcing concentration,
+and procurement analytics.
 
-Unexpected headers or malformed CSV rows stop processing instead of silently dropping data.
+https://github.com/gkarnelle/Strategic-Sourcing-Intelligence
 
----
+**2. Global Trade Data Analysis**
 
-## 📦 8. Repository Structure
+Shipment and customs entry analytics using interconnected
+synthetic trade datasets.
 
-```text
-Broker-Entry-Data-Cleaning/
-├── config/
-│   └── broker_mappings.json
-├── data/
-│   ├── raw/
-│   └── processed/
-│       ├── cleaned_entries.csv
-│       ├── exceptions.csv
-│       ├── quality_issues.csv
-│       ├── change_log.csv
-│       ├── removed_duplicates.csv
-│       ├── quality_summary.json
-│       └── data_quality_report.md
-├── docs/
-│   ├── cleaning_rules.md
-│   └── data_dictionary.md
-├── src/
-│   └── clean.py
-├── tests/
-│   └── test_clean.py
-└── README.md
-```
+https://github.com/gkarnelle/Global-Trade-Data-Analysis
 
-### Review the Generated Outputs
+**3. Broker Entry Data Cleaning & Reconciliation**
 
-1. [Data Quality Report](data/processed/data_quality_report.md) — Review overall processing results.
-2. [Cleaned Entries](data/processed/cleaned_entries.csv) — Inspect standardized records and review statuses.
-3. [Exceptions](data/processed/exceptions.csv) — Investigate unresolved issues.
-4. [Change Log](data/processed/change_log.csv) — Trace cell-level transformations.
-5. [Removed Duplicates](data/processed/removed_duplicates.csv) — Review duplicate-removal decisions.
+Broker data standardization, exception detection, auditability,
+and customs entry reconciliation.
 
-Additional outputs include `quality_issues.csv`, which records individual issues, and `quality_summary.json`, which provides machine-readable metrics.
+Together, these projects demonstrate the relationship between
+procurement data, international shipments, customs entries,
+and broker reporting.
 
-Records marked `needs_review` should be resolved or appropriately filtered before downstream analytical use.
+## Important Disclaimer
 
----
+All company names, transaction records, broker submissions,
+and analytical results are fictional or synthetic.
 
-## 🔭 9. Limitations & Future Enhancements
+HTS values are illustrative. This project demonstrates data
+engineering, analytical controls, and reconciliation methods,
+not legal classification determinations or guaranteed
+regulatory compliance.
 
-### Current Limitations
-
-- All data is fictional and intentionally limited in scale.
-- Synthetic tariff identifiers are not validated against official HTS schedules.
-- The pipeline does not determine regulatory compliance or filing eligibility.
-- Conflicting records require external verification before resolution.
-- The project does not implement formal approval workflows, access controls, or evidence retention policies.
-
-### Potential Enterprise Enhancements
-
-- **Compliance Control Matrix:** Document control owners, objectives, evidence requirements, and review frequency.
-- **Exception Management Workflow:** Introduce issue assignments, remediation statuses, and reviewer approvals.
-- **Data Stewardship Framework:** Establish critical data elements and accountable data owners.
-- **Audit Evidence Management:** Define retention requirements and review procedures.
-- **Data Quality Scorecard:** Expand quality metrics into recurring operational monitoring.
-- **Governance Documentation:** Add formalized control procedures and a responsibility matrix.
-
-These enhancements are proposed future capabilities, not existing automated functionality.
-
----
-
-## 🎯 10. Skills Demonstrated
-
-**Technical Skills:** Python, CSV processing, schema mapping, data normalization, automated testing, and reproducible data pipelines.
-
-**Data Governance:** Data quality rules, data dictionaries, source traceability, exception reporting, and documented transformation logic.
-
-**Customs Operations:** Broker data reconciliation, entry-line analysis, identification of data discrepancies, and preparation of records for compliance review.
-
-**Enterprise Thinking:** Internal control design concepts, accountability, operational risk awareness, and audit-support documentation.
-
----
-
-*This portfolio project illustrates how reliable data processing and governance principles can improve the transparency and reviewability of customs operations.*
+Exceptions require appropriate human review.
